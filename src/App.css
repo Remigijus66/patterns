@@ -1,0 +1,97 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+
+.d-flex{
+  display: flex;
+}
+.a-center{
+   align-items: center;
+}
+.j-center{
+   justify-content: center;
+}
+.f-wrap{
+  flex-wrap: wrap;
+}
+.space-btw {
+  justify-content: space-between;
+}
+.f-column {
+  flex-direction: column
+}
+.closeBtn {
+  font-size: 10px;
+  /* margin: 15px; */
+}
+
+.container{
+  /* display: flex;
+  flex-wrap: wrap; */
+  background-color: whitesmoke;
+  border:2px solid black;
+  margin: 15px;
+
+}
+.cell {
+  height:6px;
+  width:6px;
+    margin: 2px;
+   border-radius: 10px;
+   background-color: gainsboro;
+   text-indent: 100%;
+   overflow: hidden;
+
+}
+.cell:hover {
+  transform: scale(1.7);
+}
+.inhabited {
+  background-color: green
+}
+.popup-container{
+  position: absolute;
+  height: 300vh;
+  width: 100vw;
+  left: 0px;
+  top: 0px;
+  backdrop-filter: blur(2px);
+  background-color: rgba(206, 208, 177, 0.295);
+}
+.popup {
+  
+  border: 1px solid black;
+  width: 200px;
+  height: 200px;
+  background-color: white;
+   margin-top: 200px;
+  margin-left: 100px;
+ 
+}
+.empty {
+  background-color: rgb(204, 204, 204);
+  text-indent: 0%
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+
