@@ -11,12 +11,29 @@ function App() {
   const [cycle, setCycle] = useState(0)
   const [timer, setTimer] = useState(false);
   const [showSettings, setShowSettings] = useState(false)
+  const [color, setColor] = useState('green')
+  const [speed, setSpeed] = useState(10)
+  const [includeZero, setIncludeZero] = useState(false)
+  const [includeOne, setIncludeOne] = useState(false)
+  const [includeTwo, setIncludeTwo] = useState(true)
+  const [includeThree, setIncludeThree] = useState(true)
+  const [includeFour, setIncludeFour] = useState(false)
+
+
   const states = {
     ground, setGround,
     cycle, setCycle,
     timer, setTimer,
     showSettings, setShowSettings,
-    size, setSize
+    size, setSize,
+    color, setColor,
+    speed, setSpeed,
+    includeZero, setIncludeZero,
+    includeOne, setIncludeOne,
+    includeTwo, setIncludeTwo,
+    includeThree, setIncludeThree,
+    includeFour, setIncludeFour
+
   }
   return (
     <div className="a-center d-flex f-column">

@@ -13,39 +13,25 @@ const Head = ({ }) => {
       e.neighbours = 0;
     })
     setGround(groundCopy)
+    setCycle(0)
   }
 
   const oneCycle = () => {
     setCycle(cycle + 1)
   }
 
-  // const makeGo = () => {
-  //   setTimer(true)
-  // }
-  // const makeStop = () => {
-  //   setTimer(false)
-  // }
   const toggleGo = () => {
     timer ? setTimer(false) : setTimer(true)
   }
 
-  // const showSettings = () => {
-  //   return
-  // }
-
-
   return (
 
     <div>
-      <h2>Neighborhood evolution</h2>
-      <p>Select few cells and see development. </p>
-
+      <h3>Select few cells and see how the pattern develop. </h3>
       <button onClick={toggleGo}> {timer ? 'Stop' : 'Start'} </button>
-      {/* <button onClick={makeGo}> Start </button>
-      <button onClick={makeStop}> Stop </button> */}
-      <button onClick={oneCycle}>One Cycle</button>
-      <button onClick={reset} >Reset </button>
-      <button onClick={() => setShowSettings(true)}> Settings </button>
+      <button onClick={oneCycle}>One Step</button>
+      <button onClick={reset} >Reset</button>
+      <button onClick={() => { setShowSettings(true); console.log('showSettings ===', showSettings) }}> Settings </button>
     </div>
 
   );

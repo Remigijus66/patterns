@@ -4,27 +4,26 @@ import MainContext from "../context/MainContext";
 
 
 const Ground = () => {
-  const { ground, setGround, size, cycle, setCycle, timer, setTimer } = useContext(MainContext)
+  const { ground, setGround, size, cycle, setCycle, timer, color, speed, includeZero,
+    includeOne,
+    includeTwo,
+    includeThree,
+    includeFour, } = useContext(MainContext)
 
   useEffect(() => {
-    console.log('size ===', size);
     makeField(size)
-  }, []);
-
-  useEffect(() => ground.forEach((e, i, arr) => {
-    countNeighbours(arr, i)
-  }), [cycle]);
+  }, [size]);
 
   useEffect(() => {
     if (timer) {
       const timer = setTimeout(() => {
         setCycle(cycle + 1);
         clearTimeout(timer);
-      }, 50)
+      }, speed)
     }
     console.log('cycle', cycle)
     liveCycle()
-  }, [cycle]);
+  }, [cycle, timer]);
 
 
   const makeField = (s) => {
@@ -124,11 +123,12 @@ const Ground = () => {
         clicked: 0,
         neighbours: 0,
       }
-      if (e.neighbours === 2 || e.neighbours === 3 || e.neighbours === 4) cell.clicked = 1
+      if ((e.neighbours === 0 && includeZero) || (e.neighbours === 1 && includeOne) || (e.neighbours === 2 && includeTwo) || (e.neighbours === 3 && includeThree) || (e.neighbours === 4 && includeFour)) cell.clicked = 1
       arrCopy.push(cell)
       setGround(arrCopy)
 
     })
+
   };
 
   const liveCycle = () => {
@@ -137,6 +137,7 @@ const Ground = () => {
     });
     recalc(ground)
   }
+
   const toggleClick = (index) => {
     const groundCopy = [...ground];
     groundCopy[index].clicked === 1 ? groundCopy[index].clicked = 0 : groundCopy[index].clicked = 1;
@@ -153,8 +154,8 @@ const Ground = () => {
 
         {
           ground.map((x, i) => <div
-            className='cell'
-            onClick={() => toggleClick(i)} style={{ backgroundColor: ` ${x.clicked === 1 ? "green" : ""}` }}> {x.neighbours}
+            className='cell' key={i}
+            onClick={() => toggleClick(i)} style={{ backgroundColor: ` ${x.clicked === 1 ? color : ""}` }}> {x.neighbours}
           </div>)
         }
 
