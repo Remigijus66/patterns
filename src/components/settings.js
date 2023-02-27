@@ -9,7 +9,7 @@ const Settings = () => {
   const sizeRef = useRef()
 
 
-  const palette = ['green', 'red', 'blue', 'yellow', 'violet', 'pink']
+  const palette = ['green', 'red', 'blue', 'yellow', 'orange', 'cyan']
 
 
 
