@@ -23,6 +23,7 @@ function App() {
   const [increment, setIncrement] = useState(-1)
   const [firstColorIndex, setFirstColorIndex] = useState(0)
   const [secondColorIndex, setSecondColorIndex] = useState(1)
+  const [cellClass, setCellClass] = useState('cell')
 
 
   const states = {
@@ -37,33 +38,34 @@ function App() {
     includeOne, setIncludeOne,
     includeTwo, setIncludeTwo,
     includeThree, setIncludeThree,
-    includeFour, setIncludeFour
+    includeFour, setIncludeFour,
+    cellClass, setCellClass
   }
-  const backgroundColors = ['green', 'red', 'blue', 'yellow', 'orange', 'cyan']
+  const backgroundColors = ['blue', 'yellow', 'green', 'red', 'orange', 'cyan']
 
-  useEffect(() => {
-    setTimeout(() => {
-      setAngle(angle + 1);
-      setPercent(percent + increment)
-      if (angle >= 360) setAngle(0)
-      if (percent >= 100) {
-        setIncrement(-1)
-        setPercent(99)
-        secondColorIndex === backgroundColors.length - 1 ? setSecondColorIndex(0) : setSecondColorIndex(secondColorIndex + 1)
-      }
-      if (percent === -100) {
-        setIncrement(3)
-        setPercent(-99)
-        firstColorIndex === backgroundColors.length - 1 ? setFirstColorIndex(0) : setFirstColorIndex(firstColorIndex + 1)
-      }
-      clearTimeout();
-    }, 100)
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setAngle(angle + 1);
+  //     setPercent(percent + increment)
+  //     if (angle >= 360) setAngle(0)
+  //     if (percent >= 100) {
+  //       setIncrement(-1)
+  //       setPercent(99)
+  //       secondColorIndex === backgroundColors.length - 1 ? setSecondColorIndex(0) : setSecondColorIndex(secondColorIndex + 1)
+  //     }
+  //     if (percent === -100) {
+  //       setIncrement(3)
+  //       setPercent(-99)
+  //       firstColorIndex === backgroundColors.length - 1 ? setFirstColorIndex(0) : setFirstColorIndex(firstColorIndex + 1)
+  //     }
+  //     clearTimeout();
+  //   }, 100)
 
-  }, [angle]);
+  // }, [angle]);
 
 
   return (
-    <div style={{ background: `linear-gradient(${angle}deg, ${backgroundColors[firstColorIndex]} ${percent}%, ${backgroundColors[secondColorIndex]}` }} className="a-center d-flex f-column"  >
+    <div style={{ background: `linear-gradient(${angle}deg, ${backgroundColors[firstColorIndex]} ${percent}%, ${backgroundColors[secondColorIndex]}` }} className="backgound"  >
 
       <MainContext.Provider value={states}>
         {showSettings && <Settings />}

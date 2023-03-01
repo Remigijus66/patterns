@@ -8,7 +8,8 @@ const Ground = () => {
     includeOne,
     includeTwo,
     includeThree,
-    includeFour, } = useContext(MainContext)
+    includeFour, cellClass, setCellClass
+  } = useContext(MainContext)
 
   useEffect(() => {
     makeField(size)
@@ -122,6 +123,7 @@ const Ground = () => {
       const cell = {
         clicked: 0,
         neighbours: 0,
+        shine: false
       }
       if ((e.neighbours === 0 && includeZero) || (e.neighbours === 1 && includeOne) || (e.neighbours === 2 && includeTwo) || (e.neighbours === 3 && includeThree) || (e.neighbours === 4 && includeFour)) cell.clicked = 1
       arrCopy.push(cell)
@@ -144,24 +146,18 @@ const Ground = () => {
     setGround(groundCopy)
   }
 
-
   return (
-    <div className='j-center d-flex'>
-
-      <div className='container d-flex f-wrap' style={{
-        width: `${size * 10}px`, height: `${size * 10}px`
-      }} >
-
-        {
-          ground.map((x, i) => <div
-            className='cell' key={i}
-            onClick={() => toggleClick(i)} style={{ backgroundColor: ` ${x.clicked === 1 ? color : ""}` }}> {x.neighbours}
-          </div>)
-        }
-
-
-      </div >
-    </div>
+    <div className='container' style={{
+      width: `${size * 10}px`, height: `${size * 10}px`
+    }} >
+      {
+        ground.map((x, i) => <div
+          className={`cell ${x.shine ? 'shine' : ''}`} key={i}
+          onClick={() => toggleClick(i)} style={{ backgroundColor: ` ${x.clicked === 1 ? color : ""}` }}
+        > {x.neighbours}
+        </div>)
+      }
+    </div >
 
   );
 };
