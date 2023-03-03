@@ -6,28 +6,35 @@ const Head = () => {
   const { cycle, setCycle, setTimer, timer, ground, setGround, showSettings, setShowSettings, size } = useContext(MainContext)
 
   const reset = () => {
+    console.log('reset')
+    const groundCopy = [...ground]
+    groundCopy.forEach((e) => {
+      e.clicked = 0;
+      e.neighbours = 0;
+    })
+    setGround(groundCopy)
+    setCycle(0)
+    // for (let row = 0; row < size / 2; row += 1) {
+    //   let upper = size / 2 - row - 1
+    //   let lower = size / 2 + row
+    //   setTimeout(() => {
+    //     for (let column = 0; column < size; column++) {
+    //       ground[upper * size + column].shine = true
+    //       ground[lower * size + column].shine = true
+    //       ground[upper * size + column].clicked = 0
+    //       ground[lower * size + column].clicked = 0
+    //       ground[upper * size + column].neighbours = 0
+    //       ground[lower * size + column].neighbours = 0
+    //     }
+    //   }, row * 60)
+    //   setTimeout(() => {
+    //     for (let column = 0; column < size; column++) {
+    //       ground[upper * size + column].shine = false
+    //       ground[lower * size + column].shine = false
+    //     }
+    //   }, row * 70)
 
-    for (let row = 0; row < size / 2; row += 1) {
-      let upper = size / 2 - row - 1
-      let lower = size / 2 + row
-      setTimeout(() => {
-        for (let column = 0; column < size; column++) {
-          ground[upper * size + column].shine = true
-          ground[lower * size + column].shine = true
-          ground[upper * size + column].clicked = 0
-          ground[lower * size + column].clicked = 0
-          ground[upper * size + column].neighbours = 0
-          ground[lower * size + column].neighbours = 0
-        }
-      }, row * 60)
-      setTimeout(() => {
-        for (let column = 0; column < size; column++) {
-          ground[upper * size + column].shine = false
-          ground[lower * size + column].shine = false
-        }
-      }, row * 70)
-
-    }
+    // }
 
   }
 

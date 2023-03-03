@@ -26,9 +26,27 @@
 .f-column {
   flex-direction: column
 }
-.closeBtn {
-  font-size: 10px;
+.popup-header {
+  background-color: var(--track-color);
+  display: flex;
+  justify-content: space-between;
+  max-height: 40px;
+  /* d-flex space-btw */
   /* margin: 15px; */
+}
+.popup-name {
+  font-size: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+.popup-close-button {
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 2px;
+  padding: 10px;
+  font-weight: bold;
 }
 button {
   box-shadow: 5px 5px 6px 1px rgb(30 30 30 / 75%);
@@ -82,6 +100,10 @@ background-color: lightgrey;
  }
 .box:hover {
   transform: scale(1.3);
+}
+.box.selected {
+  border:3px solid rgb(48, 48, 48);
+   border-radius: 3px;
 }
 
 .cell {
@@ -145,8 +167,72 @@ background-color: lightgrey;
 
 }
 
-/* .App-link {
-  color: #61dafb;
-} */
+/* Slider */
+:root {
+  --main-color: rgb(104, 117, 217);
+  --main-color-hover: rgb(104, 117, 217, 0.2);
+  --track-color: #ddd;
+  --mark-color: #aaaaaa;
+}
+
+.customSlider {
+  /* max width of your slider */
+  max-width: 200px;
+  /* Optional: Only If you want to center your slider in the page */
+  margin: auto;
+}
+
+.customSlider-track {
+  /* Top value to align your track to the center of your thumb */
+  top: 8px;
+  /* thickness of the track */
+  height: 4px;
+ /* default color of your track */
+  background: var(--track-color);
+}
+.reverseSlider-track {
+  top: 8px;
+   height: 4px;
+  background: var(--main-color);
+}
+
+.customSlider-track.customSlider-track-0 {
+  /* color of the track before the thumb */
+  background: var(--main-color);
+}
+.reverseSlider-track.customSlider-track-0 {
+  /* color of the track before the thumb */
+  background: var(--track-color);
+}
+.customSlider-thumb {
+  cursor: pointer;
+  /*color for the thumb */
+  background: var(--main-color);
+  /* shape of the thumb: circle */
+  width: 10px;
+  height: 20px;
+  border-radius: 100%;
+  /* remove default outline when selected */
+  outline: none;
+}
+
+.customSlider-thumb:hover {
+  box-shadow: 0 0 0 8px var(--main-color-hover);
+}
+
+.customSlider-mark {
+  cursor: pointer;
+  top: 6px;
+  width: 1.5px;
+  height: 8px;
+  background-color: var(--mark-color);
+}
+.customSlider-mark.customSlider-mark-before {
+  background-color: var(--main-color);
+}
+
+.customSlider-mark.customSlider-mark-active {
+  display: none;
+}
 
 

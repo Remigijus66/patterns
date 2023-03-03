@@ -2,13 +2,15 @@ import React, { useContext, useRef } from 'react';
 import { useEffect, useState } from 'react';
 import MainContext from "../context/MainContext";
 import Checkboxes from './checkboxes';
+import SizeSlider from './sizeSlider';
+import SpeedSlider from './speedSlider';
 const Settings = () => {
 
-  const { setShowSettings, showSettings, setColor, setSpeed, setSize, ground, setGround, setCycle, setIncludeZero, setIncludeOne, setIncludeTwo, setIncludeThree, setIncludeFour } = useContext(MainContext)
+  const { setShowSettings, showSettings, color, setColor, setSpeed, size, setSize, ground, setGround, setCycle, setIncludeZero, setIncludeOne, setIncludeTwo, setIncludeThree, setIncludeFour } = useContext(MainContext)
   const speedRef = useRef()
   const sizeRef = useRef()
 
-  const palette = ['green', 'red', 'blue', 'yellow', 'orange', 'cyan']
+  const palette = ['red', 'orange', 'yellow', 'green', 'blue', 'cyan', 'indigo']
 
   const plant = (arr) => {
     const groundCopy = [...ground]
@@ -81,19 +83,23 @@ const Settings = () => {
   return (
     <div className='popup-container'>
       <div className='popup'>
+        <header className="popup-header">
+          <div className='popup-name'>
 
-        <div className="closeBtn d-flex space-btw">
-          <div className='d-flex a-center'><h5>Settings</h5></div>
+            <h5>Settings</h5>
+          </div>
           <div style={{ cursor: 'pointer', border: '1px solid black', padding: '10px', textDecoration: 'bold' }} onClick={() => setShowSettings(false)}>X</div>
-        </div>
+        </header>
         <div className='d-flex f-wrap'>
-          {palette.map((x, i) => <div style={{ backgroundColor: x }} onClick={() => setColor(x)} className='box' key={i}>  </div>)}
+          {palette.map((x, i) => <div style={{ backgroundColor: x }} onClick={() => { setColor(x); console.log(color) }} className={`box ${x === color ? 'selected' : ''}`} key={i}>  </div>)}
         </div>
 
         <button> Kaimynai </button>
         <Checkboxes />
+        <SizeSlider />
+        <SpeedSlider />
 
-        <button onClick={() => setSpeed(speedRef.current.value)} > Greitis </button>
+        <button onClick={() => setSpeed(speedRef.current.value)} style={{ marginTop: '100px' }} > Greitis </button>
         <input type={'number'} ref={speedRef} placeholder={10} />
         <button onClick={() => setSize(sizeRef.current.value)} > Dydis  </button>
         <input type={'number'} ref={sizeRef} placeholder={70} />
