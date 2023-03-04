@@ -6,10 +6,10 @@ import Head from './components/head';
 import Settings from './components/settings';
 
 function App() {
-  const [size, setSize] = useState(70);
-  const [ground, setGround] = useState([]);
+  const [size, setSize] = useState(50)
+  const [ground, setGround] = useState([])
   const [cycle, setCycle] = useState(0)
-  const [timer, setTimer] = useState(false);
+  const [timer, setTimer] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
   const [color, setColor] = useState('green')
   const [speed, setSpeed] = useState(10)
@@ -23,9 +23,6 @@ function App() {
   const [increment, setIncrement] = useState(-1)
   const [firstColorIndex, setFirstColorIndex] = useState(0)
   const [secondColorIndex, setSecondColorIndex] = useState(1)
-  const [cellClass, setCellClass] = useState('cell')
-
-
   const states = {
     ground, setGround,
     cycle, setCycle,
@@ -38,42 +35,39 @@ function App() {
     includeOne, setIncludeOne,
     includeTwo, setIncludeTwo,
     includeThree, setIncludeThree,
-    includeFour, setIncludeFour,
-    cellClass, setCellClass
+    includeFour, setIncludeFour
   }
-  const backgroundColors = ['blue', 'yellow', 'green', 'red', 'orange', 'cyan']
+  const backgroundColors = ['blue', 'yellow', 'green', 'red', 'indigo', 'cyan']
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setAngle(angle + 1);
-  //     setPercent(percent + increment)
-  //     if (angle >= 360) setAngle(0)
-  //     if (percent >= 100) {
-  //       setIncrement(-1)
-  //       setPercent(99)
-  //       secondColorIndex === backgroundColors.length - 1 ? setSecondColorIndex(0) : setSecondColorIndex(secondColorIndex + 1)
-  //     }
-  //     if (percent === -100) {
-  //       setIncrement(3)
-  //       setPercent(-99)
-  //       firstColorIndex === backgroundColors.length - 1 ? setFirstColorIndex(0) : setFirstColorIndex(firstColorIndex + 1)
-  //     }
-  //     clearTimeout();
-  //   }, 100)
-
-  // }, [angle]);
-
+  useEffect(() => {
+    setTimeout(() => {
+      setAngle(angle + 1);
+      setPercent(percent + increment)
+      if (angle >= 360) setAngle(0)
+      if (percent >= 100) {
+        setIncrement(-1)
+        setPercent(99)
+        secondColorIndex === backgroundColors.length - 1 ? setSecondColorIndex(0) : setSecondColorIndex(secondColorIndex + 1)
+      }
+      if (percent === -100) {
+        setIncrement(3)
+        setPercent(-99)
+        firstColorIndex === backgroundColors.length - 1 ? setFirstColorIndex(0) : setFirstColorIndex(firstColorIndex + 1)
+      }
+      clearTimeout();
+    }, 100)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [angle])
 
   return (
     <div style={{ background: `linear-gradient(${angle}deg, ${backgroundColors[firstColorIndex]} ${percent}%, ${backgroundColors[secondColorIndex]}` }} className="backgound"  >
-
       <MainContext.Provider value={states}>
         {showSettings && <Settings />}
         <Head />
         <Ground />
       </MainContext.Provider>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

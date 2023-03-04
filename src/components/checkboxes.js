@@ -1,35 +1,31 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import MainContext from "../context/MainContext";
-
 
 const Checkboxes = () => {
   const { includeZero, setIncludeZero, includeOne, setIncludeOne, includeTwo, setIncludeTwo, includeThree, setIncludeThree, includeFour, setIncludeFour } = useContext(MainContext)
 
-
   const zero = () => {
     setIncludeZero(!includeZero)
+  }
 
-  };
   const one = () => {
     setIncludeOne(!includeOne)
+  }
 
-  };
   const two = () => {
     setIncludeTwo(!includeTwo)
+  }
 
-  };
   const three = () => {
     setIncludeThree(!includeThree)
+  }
 
-  };
   const four = () => {
     setIncludeFour(!includeFour)
-
-  };
-
+  }
 
   return (
-    <div>
+    <div className='checkboxes'>
       <Checkbox
         label="0"
         value={includeZero}
@@ -55,10 +51,9 @@ const Checkboxes = () => {
         value={includeFour}
         onChange={four}
       />
-
     </div>
-  );
-};
+  )
+}
 
 const Checkbox = ({ label, value, onChange }) => {
   return (
@@ -67,8 +62,6 @@ const Checkbox = ({ label, value, onChange }) => {
       {label}
     </label>
   );
-};
+}
 
-
-
-export default Checkboxes;
+export default Checkboxes

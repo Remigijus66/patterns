@@ -1,19 +1,13 @@
-import React, { useContext } from 'react';
-import { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import MainContext from "../context/MainContext";
 
-
 const Ground = () => {
-  const { ground, setGround, size, cycle, setCycle, timer, color, speed, includeZero,
-    includeOne,
-    includeTwo,
-    includeThree,
-    includeFour, cellClass, setCellClass
-  } = useContext(MainContext)
+  const { ground, setGround, size, cycle, setCycle, timer, color, speed, includeZero, includeOne, includeTwo, includeThree, includeFour } = useContext(MainContext)
 
   useEffect(() => {
     makeField(size)
-  }, [size]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [size])
 
   useEffect(() => {
     if (timer) {
@@ -22,10 +16,9 @@ const Ground = () => {
         clearTimeout(timer);
       }, speed)
     }
-    console.log('cycle', cycle)
     liveCycle()
-  }, [cycle, timer]);
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cycle, timer])
 
   const makeField = (s) => {
     let groundArr = []
@@ -46,7 +39,6 @@ const Ground = () => {
   }
 
   const countNeighbours = (array, index) => {
-
     let neighboursArround = 0;
     if (index === 0) {
       neighboursArround = array
@@ -128,10 +120,8 @@ const Ground = () => {
       if ((e.neighbours === 0 && includeZero) || (e.neighbours === 1 && includeOne) || (e.neighbours === 2 && includeTwo) || (e.neighbours === 3 && includeThree) || (e.neighbours === 4 && includeFour)) cell.clicked = 1
       arrCopy.push(cell)
       setGround(arrCopy)
-
     })
-
-  };
+  }
 
   const liveCycle = () => {
     ground.forEach((e, i, arr) => {
@@ -158,7 +148,7 @@ const Ground = () => {
         </div>)
       }
     </div >
+  )
+}
 
-  );
-};
 export default Ground

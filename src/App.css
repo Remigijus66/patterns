@@ -1,39 +1,11 @@
-/* .App {
-  text-align: center;
-} */
 
-/* .App-logo {
-  height: 40vmin;
-  pointer-events: none;
-} */
-
-
-.d-flex{
-  display: flex;
-}
-.a-center{
-   align-items: center;
-}
-.j-center{
-   justify-content: center;
-}
-.f-wrap{
-  flex-wrap: wrap;
-}
-.space-btw {
-  justify-content: space-between;
-}
-.f-column {
-  flex-direction: column
-}
 .popup-header {
   background-color: var(--track-color);
   display: flex;
   justify-content: space-between;
   max-height: 40px;
-  /* d-flex space-btw */
-  /* margin: 15px; */
 }
+
 .popup-name {
   font-size: 17px;
   display: flex;
@@ -48,12 +20,38 @@
   padding: 10px;
   font-weight: bold;
 }
+.checkboxes {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px 60px;
+}
+
+.slider-box   {
+  height: 45px;
+}
+.presets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.preset {
+  margin: 5px 10px;
+  width: 100px;
+  height: 30px;
+}
 button {
   box-shadow: 5px 5px 6px 1px rgb(30 30 30 / 75%);
+  font-size: smaller;
+  font-family:cursive ;
 }
 button:hover{
 background-color: lightgrey;
 }
+ label {
+  font-size: smaller;
+  font-family:cursive ;
+ }
 
 .startStopBtn{
   width: 140px;
@@ -67,11 +65,6 @@ background-color: lightgrey;
 .stop{
    background-color: green;
  }
-
-/* button:active{
-  background-color: blueviolet;
-} */
-
 
 .container{
   display: flex;
@@ -90,6 +83,13 @@ background-color: lightgrey;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.colors-container {
+  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 .box {
   height: 20px;
@@ -114,22 +114,21 @@ background-color: lightgrey;
    background-color: gainsboro;
    text-indent: 100%;
    overflow: hidden;
-   transition: 0.05s linear;
-
-}
-/* .cell:hover {
+ }
+ 
+.cell:hover {
   transform: scale(1.7);
+}
 
-} */
-
-.cell.shine{
+/* .cell.shine{
   background-color: gold;
   transform: scale(1.5);
+} */
 
-}
-.inhabited {
+/* .inhabited {
   background-color: green
-}
+} */
+
 .popup-container{
   position: absolute;
   height: 500vh;
@@ -142,8 +141,8 @@ background-color: lightgrey;
 
 .popup {
   border: 1px solid black;
-  width: 300px;
-  height: 300px;
+  width: 260px;
+  height: 380px;
   background-color: white;
   margin-top: 200px;
   margin-left: 100px;
@@ -156,38 +155,29 @@ background-color: lightgrey;
 }
 
 .backgound {
-  /* background-color: #282c34; */
   min-height: 150vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  /* font-size: calc(10px + 2vmin);
-  color: white; */
-
 }
 
 /* Slider */
 :root {
-  --main-color: rgb(104, 117, 217);
+  --main-color: rgb(21, 104, 247);
   --main-color-hover: rgb(104, 117, 217, 0.2);
   --track-color: #ddd;
   --mark-color: #aaaaaa;
 }
 
 .customSlider {
-  /* max width of your slider */
   max-width: 200px;
-  /* Optional: Only If you want to center your slider in the page */
   margin: auto;
 }
 
 .customSlider-track {
-  /* Top value to align your track to the center of your thumb */
-  top: 8px;
-  /* thickness of the track */
-  height: 4px;
- /* default color of your track */
+    top: 8px;
+   height: 4px;
   background: var(--track-color);
 }
 .reverseSlider-track {
@@ -197,23 +187,21 @@ background-color: lightgrey;
 }
 
 .customSlider-track.customSlider-track-0 {
-  /* color of the track before the thumb */
   background: var(--main-color);
 }
 .reverseSlider-track.customSlider-track-0 {
-  /* color of the track before the thumb */
-  background: var(--track-color);
+   background: var(--track-color);
 }
 .customSlider-thumb {
   cursor: pointer;
-  /*color for the thumb */
-  background: var(--main-color);
-  /* shape of the thumb: circle */
-  width: 10px;
-  height: 20px;
-  border-radius: 100%;
-  /* remove default outline when selected */
+ background: var(--main-color);
+  width: 15px;
+  height:25px;
+  border-radius: 20%;
   outline: none;
+  color: white;
+  font-size: smaller;
+  
 }
 
 .customSlider-thumb:hover {
